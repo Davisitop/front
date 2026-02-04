@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet, RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { AuthService } from './services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +19,18 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  authService = inject(AuthService);
+  private router = inject(Router);
   title = 'turismo-frontend';
+
+  ngOnInit(): void {
+    // Restaurar sesión al iniciar la aplicación
+    this.authService.restoreSession();
+  }
+
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/']);
+  }
 }

@@ -1,0 +1,68 @@
+<div class="dashboard-container">
+  <div class="welcome-section">
+    <mat-icon class="welcome-icon">waving_hand</mat-icon>
+    <h1 class="welcome-title">¡Bienvenido, {{ userName }}!</h1>
+    <p class="welcome-subtitle">
+      Descubre los principales destinos turísticos de Quito
+    </p>
+  </div>
+
+  <div class="loading-container" *ngIf="isLoading">
+    <mat-spinner diameter="50"></mat-spinner>
+    <p>Cargando destinos...</p>
+  </div>
+
+  <div class="destinos-section" *ngIf="!isLoading">
+    <mat-grid-list cols="1" rowHeight="auto" gutterSize="20">
+      <mat-grid-tile *ngFor="let destino of destinos">
+        <mat-card class="destino-card">
+          <img
+            mat-card-image
+            [src]="destino.imagen"
+            [alt]="destino.titulo"
+            class="destino-imagen"
+          />
+
+          <mat-card-header>
+            <mat-card-title class="destino-titulo">
+              {{ destino.titulo }}
+            </mat-card-title>
+            <mat-card-subtitle class="destino-ubicacion">
+              <mat-icon class="icon-small">location_on</mat-icon>
+              {{ destino.ubicacion }}
+            </mat-card-subtitle>
+          </mat-card-header>
+
+          <mat-card-content>
+            <p class="destino-descripcion">{{ destino.descripcion }}</p>
+
+            <div class="info-grid">
+              <div class="info-item">
+                <mat-icon>schedule</mat-icon>
+                <span class="info-label">Horario:</span>
+                <span class="info-value">{{ destino.horario }}</span>
+              </div>
+              <div class="info-item">
+                <mat-icon>attach_money</mat-icon>
+                <span class="info-label">Entrada:</span>
+                <span class="info-value">{{ destino.entrada }}</span>
+              </div>
+            </div>
+          </mat-card-content>
+
+          <mat-card-actions>
+            <button
+              mat-raised-button
+              (click)="verDetalle(destino)"
+              class="ver-detalle-btn"
+              [attr.aria-label]="'Ver detalles de ' + destino.titulo"
+            >
+              <mat-icon>info</mat-icon>
+              VER DETALLES
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>

@@ -8,6 +8,32 @@
       <button mat-button routerLink="/">INICIO</button>
       <button mat-button routerLink="/recomendaciones">DESTINOS</button>
       <button mat-button routerLink="/mapa">MAPA</button>
+      
+      <div class="auth-buttons">
+        <button 
+          *ngIf="!authService.isLoggedIn()"
+          mat-raised-button 
+          routerLink="/login" 
+          class="login-button-header"
+          [attr.aria-label]="'Acceso a formulario de ingreso'"
+        >
+          <mat-icon>login</mat-icon>
+          INGRESAR
+        </button>
+        
+        <div *ngIf="authService.isLoggedIn()" class="user-info">
+          <span class="user-welcome">{{ authService.user()?.nombre }}</span>
+          <button 
+            mat-button 
+            (click)="logout()"
+            class="logout-button"
+            [attr.aria-label]="'Cerrar sesión'"
+          >
+            <mat-icon>logout</mat-icon>
+            SALIR
+          </button>
+        </div>
+      </div>
     </nav>
   </header>
 

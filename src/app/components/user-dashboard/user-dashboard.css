@@ -1,0 +1,234 @@
+.dashboard-container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.welcome-section {
+  text-align: center;
+  margin-bottom: 50px;
+  padding: 30px;
+  background: linear-gradient(135deg, var(--quito-blue) 0%, #004d99 100%);
+  border-radius: 15px;
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 51, 102, 0.2);
+}
+
+.welcome-icon {
+  font-size: 64px;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 15px;
+  color: var(--quito-gold);
+}
+
+.welcome-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  letter-spacing: 0.5px;
+}
+
+.welcome-subtitle {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.1rem;
+  margin: 0;
+  opacity: 0.95;
+  font-weight: 300;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 20px;
+  gap: 20px;
+}
+
+.loading-container p {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.1rem;
+  color: var(--quito-blue);
+  font-weight: 500;
+}
+
+.destinos-section {
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.destino-card {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 51, 102, 0.15);
+  transition: all 0.3s ease;
+  border-left: 5px solid var(--quito-gold);
+}
+
+.destino-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 51, 102, 0.25);
+}
+
+.destino-imagen {
+  height: 300px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.destino-titulo {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--quito-blue);
+  margin-bottom: 8px;
+}
+
+.destino-ubicacion {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Open Sans', sans-serif;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.icon-small {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  color: var(--quito-gold);
+}
+
+.destino-descripcion {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 15px;
+  padding: 15px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.info-item mat-icon {
+  color: var(--quito-blue);
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.info-label {
+  font-weight: 600;
+  color: var(--quito-blue);
+  font-size: 0.9rem;
+}
+
+.info-value {
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.ver-detalle-btn {
+  background-color: var(--quito-blue);
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 12px 24px;
+  border-radius: 6px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.ver-detalle-btn:hover {
+  background-color: #004d99;
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 51, 102, 0.3);
+}
+
+.ver-detalle-btn mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 20px 10px;
+  }
+
+  .welcome-section {
+    padding: 20px;
+    margin-bottom: 30px;
+  }
+
+  .welcome-title {
+    font-size: 1.8rem;
+  }
+
+  .welcome-subtitle {
+    font-size: 1rem;
+  }
+
+  .welcome-icon {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .destino-imagen {
+    height: 200px;
+  }
+
+  .destino-titulo {
+    font-size: 1.3rem;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}

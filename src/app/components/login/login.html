@@ -1,0 +1,111 @@
+<div class="login-container">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-icon class="header-icon">security</mat-icon>
+      <h1 class="login-title">Iniciar Sesión</h1>
+      <p class="login-subtitle">Bienvenido a Quito Turismo</p>
+      <p class="demo-hint">
+        <strong>Demo:</strong> admin@quito.ec / 1234 o usuario@example.com / 5678
+      </p>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <!-- Error Message -->
+        <div class="error-banner" *ngIf="errorMessage">
+          <mat-icon>error</mat-icon>
+          <span>{{ errorMessage }}</span>
+        </div>
+
+        <!-- Nombre -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Nombre Completo</mat-label>
+          <input
+            matInput
+            formControlName="nombre"
+            placeholder="Ej: Juan Pérez"
+            [attr.aria-label]="'Nombre Completo'"
+          />
+          <mat-icon matPrefix>person</mat-icon>
+          <mat-error *ngIf="nombre?.hasError('required')">
+            El nombre es requerido
+          </mat-error>
+          <mat-error *ngIf="nombre?.hasError('minlength')">
+            El nombre debe tener al menos 3 caracteres
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Email -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Correo Electrónico</mat-label>
+          <input
+            matInput
+            formControlName="email"
+            type="email"
+            placeholder="correo@ejemplo.com"
+            [attr.aria-label]="'Correo Electrónico'"
+          />
+          <mat-icon matPrefix>mail</mat-icon>
+          <mat-error *ngIf="email?.hasError('required')">
+            El correo es requerido
+          </mat-error>
+          <mat-error *ngIf="email?.hasError('email')">
+            Ingresa un correo válido
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Contraseña -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Contraseña</mat-label>
+          <input
+            matInput
+            formControlName="password"
+            type="password"
+            placeholder="Mínimo 6 caracteres"
+            [attr.aria-label]="'Contraseña'"
+          />
+          <mat-icon matPrefix>lock</mat-icon>
+          <mat-error *ngIf="password?.hasError('required')">
+            La contraseña es requerida
+          </mat-error>
+          <mat-error *ngIf="password?.hasError('minlength')">
+            La contraseña debe tener al menos 6 caracteres
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Mensaje de Error -->
+        <div class="error-message" *ngIf="errorMessage" role="alert">
+          <mat-icon>error</mat-icon>
+          <span>{{ errorMessage }}</span>
+        </div>
+
+        <!-- Botón de Envío -->
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="login-button"
+          [disabled]="isLoading"
+          [attr.aria-label]="'Botón para iniciar sesión'"
+        >
+          <mat-icon *ngIf="!isLoading" class="button-icon">login</mat-icon>
+          <mat-progress-spinner
+            *ngIf="isLoading"
+            diameter="24"
+            mode="indeterminate"
+            class="spinner-button"
+          ></mat-progress-spinner>
+          {{ isLoading ? 'Ingresando...' : 'INGRESAR' }}
+        </button>
+      </form>
+
+      <!-- Pie de página -->
+      <div class="login-footer">
+        <p class="accessibility-note">
+          Aplicación accesible para adultos mayores
+        </p>
+        <p class="footer-text">© 2026 Municipio de Quito</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
