@@ -1,17 +1,36 @@
-﻿import { Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home';
-import { RecomendacionesComponent } from './components/recomendaciones/recomendaciones';
-import { MapaComponent } from './components/mapa/mapa';
-import { LoginComponent } from './components/login/login';
-import { UserDashboardComponent } from './components/user-dashboard/user-dashboard';
-import { authGuard } from './guards/auth.guard';
+import { DestinosComponent } from './components/destinos/destinos.component';
+import { ContactoComponent } from './components/contacto/contacto.component';
+import { LoginComponent } from './components/login/login.component';
+import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'dashboard', redirectTo: 'panel-usuario', pathMatch: 'full' },
-  { path: 'panel-usuario', component: UserDashboardComponent, canActivate: [authGuard] },
-  { path: '', component: HomeComponent },
-  { path: 'recomendaciones', component: RecomendacionesComponent },
-  { path: 'mapa', component: MapaComponent },
-  { path: '**', redirectTo: '' }
+  {
+    path: '',
+    component: HomeComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'destinos',
+    component: DestinosComponent,
+  },
+  {
+    path: 'contacto',
+    component: ContactoComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'panel-usuario',
+    component: UserDashboardComponent,
+    canActivate: [AuthGuard], // Ruta protegida
+  },
+  {
+    path: '**',
+    redirectTo: '',
+  },
 ];

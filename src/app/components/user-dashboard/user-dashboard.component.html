@@ -1,0 +1,42 @@
+<div class="dashboard-container">
+  <div class="welcome-header">
+    <h1 *ngIf="currentUser">¡Bienvenido, {{ currentUser.nombre }}!</h1>
+    <p>Descubre los tesoros que Quito tiene para ofrecer.</p>
+  </div>
+
+  <div *ngIf="destinos$ | async as destinos; else loading" class="grid-container">
+    <mat-grid-list cols="3" rowHeight="450px" gutterSize="20px">
+      <mat-grid-tile *ngFor="let destino of destinos">
+        <mat-card class="destino-card">
+          <img
+            mat-card-image
+            [src]="destino.imagen"
+            [alt]="'Imagen de ' + destino.titulo"
+          />
+          <mat-card-header>
+            <mat-card-title>{{ destino.titulo }}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{ destino.descripcion }}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="verDetalles(destino)"
+            >
+              Ver Detalles
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+
+  <ng-template #loading>
+    <div class="loading-indicator">
+      <mat-spinner [diameter]="80"></mat-spinner>
+      <p>Cargando destinos...</p>
+    </div>
+  </ng-template>
+</div>

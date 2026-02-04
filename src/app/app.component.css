@@ -1,0 +1,7 @@
+.main-content {
+  min-height: calc(
+    100vh - 140px
+  ); /* Ajusta según la altura de tu header y footer */
+  padding-top: 70px; /* Para compensar el header fijo */
+  background: var(--app-background);
+}

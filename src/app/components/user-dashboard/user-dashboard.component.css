@@ -1,0 +1,83 @@
+.dashboard-container {
+  padding: 2rem 5%;
+}
+
+.welcome-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.welcome-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--quito-blue);
+}
+
+.welcome-header p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.grid-container {
+  margin: 0 auto;
+}
+
+.destino-card {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.destino-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+mat-card-image {
+  height: 200px;
+  object-fit: cover;
+}
+
+mat-card-header {
+  padding: 1rem 1rem 0.5rem;
+}
+
+mat-card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--quito-blue);
+}
+
+mat-card-content {
+  padding: 0.5rem 1rem 1rem;
+  flex-grow: 1;
+}
+
+mat-card-actions {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+mat-card-actions button {
+  width: 80%;
+  padding: 10px 0;
+  font-size: 0.95rem;
+}
+
+.loading-indicator {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  color: #777;
+}
+
+.loading-indicator p {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+}

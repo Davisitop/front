@@ -1,0 +1,58 @@
+<div class="login-container">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title>Acceso de Usuario</mat-card-title>
+      <mat-card-subtitle>Ingresa tus credenciales</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Correo Electrónico</mat-label>
+          <input
+            matInput
+            formControlName="email"
+            placeholder="ej: tu@correo.com"
+            required
+          />
+          <mat-error *ngIf="loginForm.get('email')?.hasError('required')"
+            >El correo es requerido</mat-error
+          >
+          <mat-error *ngIf="loginForm.get('email')?.hasError('email')"
+            >Formato de correo inválido</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Contraseña</mat-label>
+          <input
+            matInput
+            formControlName="password"
+            type="password"
+            required
+          />
+          <mat-error *ngIf="loginForm.get('password')?.hasError('required')"
+            >La contraseña es requerida</mat-error
+          >
+        </mat-form-field>
+
+        <div class="login-actions">
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="isLoading"
+            class="login-button"
+          >
+            <span *ngIf="!isLoading">Ingresar</span>
+            <mat-spinner
+              *ngIf="isLoading"
+              [diameter]="24"
+              class="button-spinner"
+            ></mat-spinner>
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

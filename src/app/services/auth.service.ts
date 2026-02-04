@@ -1,66 +1,57 @@
 import { Injectable } from '@angular/core';
-import { signal, computed } from '@angular/core';
-import { of, delay } from 'rxjs';
+import { Router } from '@angular/router';
+import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
+import { delay, tap } from 'rxjs/operators';
 import { MOCK_USERS } from '../data/mock-data';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private isAuthenticatedSignal = signal(false);
-  private userSignal = signal<{ email: string; nombre: string } | null>(null);
+  private currentUserSubject: BehaviorSubject<any | null> = new BehaviorSubject<any | null>(
+    null
+  );
+  public currentUser = this.currentUserSubject.asObservable();
 
-  isAuthenticated = this.isAuthenticatedSignal.asReadonly();
-  user = this.userSignal.asReadonly();
-
-  isLoggedIn = computed(() => this.isAuthenticatedSignal());
-
-  // Simulación de login con validación contra mock data
-  login(email: string, password: string, nombre: string): boolean {
-    // Validación básica
-    if (!email || !password) {
-      return false;
+  constructor(private router: Router) {
+    // Revisa si hay un usuario en localStorage al iniciar
+    const storedUser = localStorage.getItem('currentUser');
+    if (storedUser) {
+      this.currentUserSubject.next(JSON.parse(storedUser));
     }
+  }
 
-    // Validar contra mock users
-    const foundUser = MOCK_USERS.find(
-      (user) => user.email === email && user.password === password
+  login(email: string, password: string): Observable<any> {
+    const user = MOCK_USERS.find(
+      (u) => u.email === email && u.password === password
     );
 
-    if (!foundUser) {
-      return false;
+    if (user) {
+      return of(user).pipe(
+        delay(1000), // Simula latencia de red
+        tap(() => {
+          localStorage.setItem('currentUser', JSON.stringify(user));
+          this.currentUserSubject.next(user);
+        })
+      );
+    } else {
+      return throwError(() => new Error('Usuario o contraseña incorrectos')).pipe(
+        delay(1000)
+      );
     }
-
-    // Simulación de autenticación exitosa
-    this.isAuthenticatedSignal.set(true);
-    this.userSignal.set({ email, nombre: foundUser.nombre });
-
-    // Guardar estado en sessionStorage (persistencia básica)
-    sessionStorage.setItem(
-      'auth_user',
-      JSON.stringify({ email, nombre: foundUser.nombre })
-    );
-
-    return true;
   }
 
   logout(): void {
-    this.isAuthenticatedSignal.set(false);
-    this.userSignal.set(null);
-    sessionStorage.removeItem('auth_user');
+    localStorage.removeItem('currentUser');
+    this.currentUserSubject.next(null);
+    this.router.navigate(['/login']);
   }
 
-  // Restaurar sesión al iniciar la app
-  restoreSession(): void {
-    const savedUser = sessionStorage.getItem('auth_user');
-    if (savedUser) {
-      try {
-        const user = JSON.parse(savedUser);
-        this.isAuthenticatedSignal.set(true);
-        this.userSignal.set(user);
-      } catch {
-        this.logout();
-      }
-    }
+  isAuthenticated(): boolean {
+    return this.currentUserSubject.value !== null;
+  }
+
+  getCurrentUser() {
+    return this.currentUserSubject.value;
   }
 }
