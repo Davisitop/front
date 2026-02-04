@@ -1,3 +1,4 @@
+
 <div class="dashboard-container">
   <div class="welcome-section">
     <mat-icon class="welcome-icon">waving_hand</mat-icon>
@@ -19,6 +20,7 @@
           <img
             mat-card-image
             [src]="destino.imagen"
+            (error)="onImgError($event)"
             [alt]="destino.titulo"
             class="destino-imagen"
           />

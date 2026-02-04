@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
     MatButtonModule
   ],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrls: ['./app.css']
 })
 export class AppComponent implements OnInit {
   authService = inject(AuthService);
@@ -34,3 +34,4 @@ export class AppComponent implements OnInit {
     this.router.navigate(['/']);
   }
 }
+export { AppComponent as App };

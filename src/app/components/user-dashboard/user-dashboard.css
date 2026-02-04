@@ -1,3 +1,31 @@
+.dashboard-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+}
+
+.place-card {
+  width: 330px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.place-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #666;
+  margin-top: 8px;
+}
 .dashboard-container {
   padding: 40px 20px;
   max-width: 1200px;

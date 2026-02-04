@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [CommonModule, MatButtonModule, MatIconModule, RouterModule],
   templateUrl: './mapa.html',
-  styleUrl: './mapa.css'
+  styleUrls: ['./mapa.css']
 })
 export class MapaComponent {}
+export { MapaComponent as Mapa };

@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [CommonModule, MatCardModule, MatButtonModule, MatIconModule, RouterModule],
   templateUrl: './recomendaciones.html',
-  styleUrl: './recomendaciones.css'
+  styleUrls: ['./recomendaciones.css']
 })
 export class RecomendacionesComponent {}
+export { RecomendacionesComponent as Recomendaciones };
