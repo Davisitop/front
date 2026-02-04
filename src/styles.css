@@ -20,13 +20,19 @@ body {
 }
 
 .main-header {
-  background-color: var(--quito-blue);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 51, 102, 0.85);
+  backdrop-filter: blur(10px);
   color: white;
   padding: 1rem 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 1000;
 }
 
 .brand-name {
@@ -38,6 +44,7 @@ body {
 
 .content-area {
   flex: 1;
+  padding-top: 80px; /* Add padding to prevent content from being hidden by the fixed header */
 }
 
 .main-footer {
