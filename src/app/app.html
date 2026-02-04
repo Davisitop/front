@@ -1,0 +1,21 @@
+<div class="app-container">
+  <header class="main-header">
+    <div class="logo-section" routerLink="/">
+      <mat-icon>location_city</mat-icon>
+      <span class="brand-name">QUITO TURISMO</span>
+    </div>
+    <nav class="nav-links">
+      <button mat-button routerLink="/">INICIO</button>
+      <button mat-button routerLink="/recomendaciones">DESTINOS</button>
+      <button mat-button routerLink="/mapa">MAPA</button>
+    </nav>
+  </header>
+
+  <main class="content-area">
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer class="main-footer">
+    <p>Municipio de Quito - Guía para el Adulto Mayor</p>
+  </footer>
+</div>

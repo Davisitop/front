@@ -1,0 +1,16 @@
+.map-layout { display: grid; grid-template-columns: 350px 1fr; height: calc(100vh - 120px); }
+.map-sidebar { background: white; padding: 20px; border-right: 1px solid #ddd; overflow-y: auto; }
+.poi-item { display: flex; gap: 15px; padding: 15px; border-bottom: 1px solid #eee; }
+.poi-item h4 { margin: 0; font-size: 1.2rem; }
+.map-container { background: #f0f0f0; position: relative; overflow: hidden; }
+.map-frame {
+  width: 100%; height: 100%;
+  background: url('https://user-images.githubusercontent.com/194400/49331010-4bb3a200-f565-11e8-963c-396265e8a71d.png') center/cover;
+}
+.marker {
+  position: absolute; width: 25px; height: 25px; background: #e74c3c;
+  border: 3px solid white; border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg); cursor: pointer;
+}
+.m-panecillo { top: 40%; left: 45%; }
+.m-basilica { top: 30%; left: 50%; }

@@ -1,0 +1,41 @@
+<div class="page-layout">
+  <header class="top-bar">
+    <button mat-icon-button routerLink="/" class="back-btn">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <h2>Lugares Sugeridos</h2>
+  </header>
+
+  <div class="cards-scroll">
+    <mat-card class="place-card">
+      <div class="card-image-container">
+        <img mat-card-image src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600" alt="Hotel">
+        <span class="tag-accesible">Accesible</span>
+      </div>
+      <mat-card-content>
+        <h3>Centro Histórico</h3>
+        <p>Caminos planos, muchas bancas para descansar y baños públicos cerca.</p>
+        <div class="info-row">
+          <mat-icon>timer</mat-icon> <span>A 15 min de aquí</span>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-flat-button color="primary" class="btn-moderno w-100">CÓMO LLEGAR</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-card class="place-card">
+      <div class="card-image-container">
+        <img mat-card-image src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600" alt="Playa">
+        <span class="tag-accesible">Sombra</span>
+      </div>
+      <mat-card-content>
+        <h3>Playa Las Olas</h3>
+        <p>Cuenta con pasarelas de madera para caminar con comodidad hasta el agua.</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-flat-button color="primary" class="btn-moderno w-100">CÓMO LLEGAR</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+import { Routes } from '@angular/router';
+import { HomeComponent } from './components/home/home';
+import { RecomendacionesComponent } from './components/recomendaciones/recomendaciones';
+import { MapaComponent } from './components/mapa/mapa';
+
+export const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'recomendaciones', component: RecomendacionesComponent },
+  { path: 'mapa', component: MapaComponent },
+  { path: '**', redirectTo: '' }
+];
